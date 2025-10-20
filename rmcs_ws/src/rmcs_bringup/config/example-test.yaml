@@ -1,0 +1,26 @@
+rmcs_executor:
+  ros__parameters:
+    update_rate: 1000.0  # 1000Hz 更新频率
+    components:
+      # 组件A：生成 sin(ωt) 和 cos(ωt)
+      - rmcs_core::controller::example::SineCosineGenerator -> sine_cosine_generator
+      
+      # 组件B：计算两者之和
+      - rmcs_core::controller::example::SineCosineAdder -> sine_cosine_adder
+      
+      # ValueBroadcaster：广播三个参数用于可视化
+      - rmcs_core::broadcaster::ValueBroadcaster -> value_broadcaster
+
+# 组件A的配置
+sine_cosine_generator:
+  ros__parameters:
+    omega: 6.283185307  # 角频率 ω = 2π rad/s (频率为 1Hz)
+
+# ValueBroadcaster的配置
+value_broadcaster:
+  ros__parameters:
+    forward_list:
+      - /example/sine      # 广播 sin(ωt)
+      - /example/cosine    # 广播 cos(ωt)
+      - /example/sum       # 广播 sin(ωt) + cos(ωt)
+

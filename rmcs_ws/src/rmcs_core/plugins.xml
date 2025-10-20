@@ -98,4 +98,10 @@
   <class type="rmcs_core::referee::app::ui::Hero" base_class_type="rmcs_executor::Component">
     <description>Test plugin.</description>
   </class>
+  <class type="rmcs_core::controller::example::SineCosineGenerator" base_class_type="rmcs_executor::Component">
+    <description>Sine and Cosine generator example.</description>
+  </class>
+  <class type="rmcs_core::controller::example::SineCosineAdder" base_class_type="rmcs_executor::Component">
+    <description>Sine and Cosine adder example.</description>
+  </class>
 </library>
